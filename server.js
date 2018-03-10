@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const ArticleController = require("./controllers/ArticleController")
+const RecipeController = require("./controllers/RecipeController")
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -17,7 +17,7 @@ app.use(express.static("client/build"));
 
 
 // Add routes, both API and view
-app.use(ArticleController);
+app.use(RecipeController);
 
 // Set up promises with mongoose
 mongoose.Promise = global.Promise;

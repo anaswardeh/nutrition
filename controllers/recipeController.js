@@ -2,34 +2,34 @@ const path = require("path");
 const router = require("express").Router();
 const db = require("../models");
 
-const articleFunctions = {
+const recipeFunctions = {
   findAll: function (req, res) {
-    db.article
+    db.recipe
       .find({"uid":req.params.uid})
       .sort({ saveNow: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findById: function (req, res) {
-    db.article
+    db.recipe
       .findById(req.params.id)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   create: function (req, res) {
-    db.article
+    db.recipe
       .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   update: function (req, res) {
-    db.article
+    db.recipe
       .findOneAndUpdate({ _id: req.params.id }, req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   remove: function (req, res) {
-    db.article
+    db.recipe
       .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
@@ -38,11 +38,11 @@ const articleFunctions = {
 }
 
 
-router.get("/api/allarticles/:uid", articleFunctions.findAll)
+router.get("/api/allrecipes/:uid", recipeFunctions.findAll)
 
-router.post("/api/articles", articleFunctions.create)
+router.post("/api/recipes", recipeFunctions.create)
 
-router.delete("/api/articles/:id", articleFunctions.remove)
+router.delete("/api/recipes/:id", recipeFunctions.remove)
 
 
 

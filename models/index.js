@@ -1,3 +1,3 @@
 module.exports = {
-  article: require("./article")
+  recipe: require("./recipe")
 };

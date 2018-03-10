@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const articleSchema = new Schema({
+const recipeSchema = new Schema({
   title: { type: String, required: true },
   date: { type: Date, required: true }, 
   url: { type: String, required: true },
@@ -11,6 +11,6 @@ const articleSchema = new Schema({
   synopsis: { type: String, required: false }
 });
 
-const article = mongoose.model("article", articleSchema);
+const recipe = mongoose.model("recipe", recipeSchema);
 
-module.exports = article;
+module.exports = recipe;
